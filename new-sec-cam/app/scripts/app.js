@@ -26,13 +26,14 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      /*
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/live-stream', {
+        templateUrl: 'views/live-stream.html',
+        controller: 'LiveStreamCtrl'
       })
-      */
+      .when('/photos', {
+        templateUrl: 'views/photos.html',
+        controller: 'PhotosCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
