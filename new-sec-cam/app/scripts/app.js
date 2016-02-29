@@ -37,4 +37,9 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  }).run(function($http) {
+    console.log('getting');
+    $http.get('http://localhost:8010').then(function(data) {
+      console.log(data);
+    });
   });
