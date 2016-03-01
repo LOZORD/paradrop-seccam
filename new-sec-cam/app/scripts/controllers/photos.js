@@ -17,13 +17,16 @@ angular.module('seccamApp')
 
     var getPhotos = function() {
       $http.get(PHOTO_SERVER_URL).then(function(payload) {
-        var photoFileNames = payload.data || [];
+        console.log('payload', payload);
+        var photoFileNames = []; // TODO payload.data || [];
 
         $scope.photos = photoFileNames.map(function(fname) {
           return PHOTO_SERVER_URL + '/photos/' + fname;
         });
       });
     };
+
+    getPhotos();
 
     stopTime = $interval(getPhotos, INTERVAL_TIME);
   }]);

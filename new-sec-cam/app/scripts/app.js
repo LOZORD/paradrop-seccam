@@ -37,9 +37,8 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  }).run(function($http) {
-    console.log('getting');
-    $http.get('http://localhost:8010').then(function(data) {
-      console.log(data);
-    });
-  });
+  }).controller('BaseController', ['$scope', '$location', function($scope, $location) {
+    $scope.isActive = function(someUrl) {
+      return someUrl === $location.url();
+    };
+  }]);

@@ -1,4 +1,5 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+$paradrop-blue: #337AB7;
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -93,4 +94,13 @@ body {
 /* Leo's stuff */
 #video-stream {
   width: 100%;
+}
+
+#paradrop-link {
+  color: $paradrop-blue;
+
+  &:hover {
+    color: white;
+    background-color: $paradrop-blue;
+  }
 }
