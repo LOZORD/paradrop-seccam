@@ -8,5 +8,22 @@
  * Controller of the seccamApp
  */
 angular.module('seccamApp')
-  .controller('PhotosCtrl', [function () {
+  .controller('PhotosCtrl', ['$scope', '$http', '$interval', function ($scope, $http, $interval) {
+    $scope.photos = [];
+
+    var PHOTO_SERVER_URL = 'http://localhost:8010';
+    var INTERVAL_TIME = 1000 * 60 * 1; // one minute
+    var stopTime = null;
+
+    var getPhotos = function() {
+      $http.get(PHOTO_SERVER_URL).then(function(payload) {
+        var photoFileNames = payload.data || [];
+
+        $scope.photos = photoFileNames.map(function(fname) {
+          return PHOTO_SERVER_URL + '/photos/' + fname;
+        });
+      });
+    };
+
+    stopTime = $interval(getPhotos, INTERVAL_TIME);
   }]);
