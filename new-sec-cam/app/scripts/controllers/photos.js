@@ -17,12 +17,8 @@ angular.module('seccamApp')
 
     var getPhotos = function() {
       $http.get(PHOTO_SERVER_URL).then(function(payload) {
-        console.log('payload', payload);
-        var photoFileNames = []; // TODO payload.data || [];
-
-        $scope.photos = photoFileNames.map(function(fname) {
-          return PHOTO_SERVER_URL + '/photos/' + fname;
-        });
+        //console.log('payload', payload);
+        $scope.photos = payload.data;
       });
     };
 

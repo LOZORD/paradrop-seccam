@@ -4,7 +4,8 @@
 var fs = require('fs');
 var path = require('path');
 
-var baseDir = './pictures';
+// I do this so photos are accessible to the website
+var baseDir = './app/cam-pictures';
 
 var isImage = (fileName) => /image-\w+.jpg/.test(fileName);
 
@@ -17,7 +18,7 @@ var getNMostRecentPhotos = (n) => {
   var photoData = allFileNames
     .filter(isImage)
     .map((name) => {
-      var photoPath = path.join(baseDir, name);
+      var photoPath = path.join('cam-pictures', name);
       var iStart    = name.indexOf('-') + 1; // don't interpret at negative
       var iEnd      = name.indexOf('.');
       var tsStr     = name.slice(iStart, iEnd);

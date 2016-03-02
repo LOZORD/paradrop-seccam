@@ -465,7 +465,6 @@ module.exports = function (grunt) {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
 
-    // TODO
     console.log('STARTING PHOTO SERVER!');
     require('./photo-server').listen(8010);
 
