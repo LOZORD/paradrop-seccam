@@ -8,24 +8,17 @@
  * Controller of the seccamApp
  */
 angular.module('seccamApp')
-.controller('LiveStreamCtrl', [function () {
-  /* copied from old site
-  $(document).ready
-  (
-   function()
-   {
-     const THE_VIDEO = $('#the_video');
+.controller('LiveStreamCtrl', ['$scope', function ($scope) {
+  $scope.streamStarted = false;
 
-     const VIDEO_ATTR = 'http://admin@192.168.50.20/video.cgi';
+  var address = 'http://admin@192.168.128.99/video.cgi';
 
-     THE_VIDEO.click
-    (
-     function(event)
-     {
-       $(this).attr('src', VIDEO_ATTR);
-     }
-    );
-   } //end ready func
-  ); //end doc ready
-  */
+  $scope.startStream = function() {
+    if ($scope.streamStarted) {
+      return;
+    } else {
+      $scope.streamStarted = true;
+      $('#video-stream').attr('src', address);
+    }
+  };
 }]);
