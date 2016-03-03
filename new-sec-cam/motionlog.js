@@ -5,11 +5,14 @@ var fs = require('fs');
 var path = require('path');
 
 // I do this so photos are accessible to the website
-var baseDir = './app/cam-pictures';
+// used to be 'app/cam-pictures'
+var baseDir = '../motionLog';
 
-var isImage = (fileName) => /image-\w+.jpg/.test(fileName);
+var isImage = function(fileName) {
+  return /image-\w+.jpg/.test(fileName);
+};
 
-var getNMostRecentPhotos = (n) => {
+var getNMostRecentPhotos = function(n) {
   n = n || 40;
 
   // Do we want this to be async?
@@ -17,8 +20,8 @@ var getNMostRecentPhotos = (n) => {
 
   var photoData = allFileNames
     .filter(isImage)
-    .map((name) => {
-      var photoPath = path.join('cam-pictures', name);
+    .map(function (name) {
+      var photoPath = path.join('motionLog', name); //XXX: this will probably need to change!!!
       var iStart    = name.indexOf('-') + 1; // don't interpret at negative
       var iEnd      = name.indexOf('.');
       var tsStr     = name.slice(iStart, iEnd);
@@ -28,7 +31,7 @@ var getNMostRecentPhotos = (n) => {
         ts:   ts
       };
     })
-    .sort((a, b) => b.ts - a.ts );
+    .sort(function(a, b) { return b.ts - a.ts } );
 
   return photoData.slice(0, n);
 };
