@@ -9,7 +9,8 @@ var path = require('path');
 var baseDir = '../motionLog';
 
 var isImage = function(fileName) {
-  return /image-\w+.jpg/.test(fileName);
+  // e.g. motion-123456789.jpg
+  return /motion-\d+.jpg/.test(fileName);
 };
 
 var getNMostRecentPhotos = function(n) {
@@ -25,7 +26,7 @@ var getNMostRecentPhotos = function(n) {
       var iStart    = name.indexOf('-') + 1; // don't interpret at negative
       var iEnd      = name.indexOf('.');
       var tsStr     = name.slice(iStart, iEnd);
-      var ts = parseInt(tsStr, 10);
+      var ts = parseInt(tsStr, 10) * 1000; // JS timestamps use milliseconds
       return {
         path: photoPath,
         ts:   ts
