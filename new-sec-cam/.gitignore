@@ -6,3 +6,7 @@
 
 pictures/image-*.jpg
 app/cam-pictures/image-*.jpg
+app/cam-pictures/motion-*.jpg
+
+*.tar.gz
+full-dist

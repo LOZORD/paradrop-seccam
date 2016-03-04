@@ -11,7 +11,8 @@ angular.module('seccamApp')
   .controller('PhotosCtrl', ['$scope', '$http', '$interval', function ($scope, $http, $interval) {
     $scope.photos = [];
 
-    var PHOTO_SERVER_URL = 'http://localhost:8010';
+    // used to be 'http://localhost:8010'
+    var PHOTO_SERVER_URL = 'http://192.168.128.2:8010';
     var INTERVAL_TIME = 1000 * 60 * 1; // one minute
     var stopTime = null;
 
